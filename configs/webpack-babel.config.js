@@ -20,6 +20,9 @@ module.exports = {
         path: './dist/',
         'filename': 'bundle.js',
     },
+    resolve: {
+        extensions: ['', '.css', '.js'],
+    },
     plugins: args.production ? [
         new ExtractTextPlugin('style.css', { allChunks: true })
     ] : [],
@@ -31,7 +34,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: args.production ? ExtractTextPlugin.extract('style-loader', 'css-loader?minimize?modules') : 'style!css?modules',
+                loader: args.production ? ExtractTextPlugin.extract('style-loader', 'css-loader?minimize') : 'style!css',
             },
         ]
     }

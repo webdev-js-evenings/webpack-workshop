@@ -12,9 +12,6 @@ module.exports = {
       'webpack/hot/dev-server',
       './src/style.js', 
     ],
-    debug: true, //nastavuje mod loaderům
-    devtool: 'eval', //generovaný kod, eval-source-map - originální kod
-    //https://webpack.github.io/docs/configuration.html#debug
     output: {
         path: './dist/',
         'filename': 'bundle.js',
@@ -25,8 +22,12 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
+                test: /\.cssm$/,
                 loader: args.production ? ExtractTextPlugin.extract('style-loader', 'css-loader?minimize?modules') : 'style!css?modules',
+            },
+            {
+                test: /\.css$/,
+                loader: args.production ? ExtractTextPlugin.extract('style-loader', 'css-loader?minimize') : 'style!css',
             },
         ]
     }

@@ -1,3 +1,4 @@
-const style = require('./styles/style.css')
+const regularStyle = require('./styles/style.css')
+//const cssModule = require('./styles/style-module.cssm')
 
-console.log(style)
+console.log(regularStyle)
