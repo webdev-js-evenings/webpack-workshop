@@ -154,6 +154,8 @@ Nezapomeňme tohle vypnout pro produkci!!
 
 Nicméně tady fungují i legrace jako async a await, takže tohle nastavení můžeme vesele použít.
 
+## Demo time 
 No a teď si můžeme všichni zkusit nastavit nějaký hezký skoro produkční `webpack.config.js`, směle do toho!
 
+## A příště?
 Příště si (snad) ukážeme HMR s reactem a zoptimalizujeme si build, aby nebyl tak velký.
