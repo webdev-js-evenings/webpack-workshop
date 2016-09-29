@@ -36,6 +36,17 @@ module.exports = {
                 test: /\.css$/,
                 loader: args.production ? ExtractTextPlugin.extract('style-loader', 'css-loader?minimize') : 'style!css',
             },
+            {
+                test: /.*\.(gif|png|jpe?g|svg)$/i,
+                loaders: [
+                    'url?limit=25000',
+                    'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+                ]
+            },
+            {
+                test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+                loader: 'file-loader'
+            }
         ]
     }
 }

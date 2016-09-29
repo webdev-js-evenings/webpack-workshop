@@ -8,7 +8,7 @@ async function run () {
 }
 
 function hellorError() {
-    throw new Error('error')
+    throw new Error('other error')
 }
 
 

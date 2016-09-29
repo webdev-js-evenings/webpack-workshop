@@ -8,6 +8,6 @@ export default class BabelClass {
     }
 
     throwError() {
-        throw new Error('Error here!')
+        throw new Error('Other Error here!')
     }
 }

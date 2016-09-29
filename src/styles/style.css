@@ -1,5 +1,7 @@
 body {
-    background: red;
+    background: white;
+    /*background-image: url('../images/avocode.png');*/
+
 }
 
 .customClass {
