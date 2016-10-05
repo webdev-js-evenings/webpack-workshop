@@ -12,7 +12,9 @@
     "build:babel": "webpack -p --config configs/webpack-babel.config.js",
     "server:babel": "webpack-dev-server --hot --config configs/webpack-babel.config.js --content-base example/",
     "server:sharp": "webpack-dev-server --hot --content-base example/",
-    "build:prod": "webpack -p"
+    "build:prod": "webpack -p",
+    "server:plugins": "webpack-dev-server --hot --config configs/webpack-plugins.config.js --content-base example/",
+    "build:plugins": "webpack -p --config configs/webpack-plugins.config.js"
   },
   "repository": {
     "type": "git",

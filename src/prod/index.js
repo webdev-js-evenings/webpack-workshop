@@ -59,7 +59,6 @@ class Container extends React.Component {
       
       return
     }
-
   }
 
   render() {
