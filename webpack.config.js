@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const yargs = require('yargs')
 
@@ -7,13 +8,15 @@ const args = yargs
 
 
 module.exports = {
-    debug: true, //nastavuje mod loaderům
-    devtool: 'eval-source-map', //
-    //https://webpack.github.io/docs/configuration.html#debug
-    entry: [
+    debug: !args.production, //nastavuje mod loaderům
+    devtool: args.production ? 'source-map' : 'eval-source-map',
+    entry: !args.production ? [
         'babel-polyfill',
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
+        './src/prod/index.js', 
+    ] : [
+        'babel-polyfill',
         './src/prod/index.js', 
     ],
     output: {
@@ -24,7 +27,22 @@ module.exports = {
         extensions: ['', '.css', '.js'],
     },
     plugins: args.production ? [
-        new ExtractTextPlugin('style.css', { allChunks: true })
+        new ExtractTextPlugin('style.css', { allChunks: true }),
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                screw_ie8: true,
+                warnings: false,
+            },
+            comments: false,
+        }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(args.production ? 'production' : 'development')
+            },
+            '__DEVTOOLS__': !args.production,
+            '__DEV__': !args.production,
+        }),
     ] : [],
     module: {
         loaders: [
