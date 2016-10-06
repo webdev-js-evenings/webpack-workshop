@@ -1,4 +1,15 @@
 {
   "presets": ["latest", "stage-0", "react"],
-  "plugins": ["add-module-exports", "transform-decorators-legacy", "react-hot-loader/babel"]
+  "plugins": ["add-module-exports", "transform-decorators-legacy"],
+  "env": {
+    "development": {
+      "plugins": [["react-transform", {
+        "transforms": [{
+          "transform": "react-transform-hmr",
+          "imports": ["react"],
+          "locals": ["module"]
+        }]
+      }]]
+    }
+  }
 }

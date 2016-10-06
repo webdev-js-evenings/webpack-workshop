@@ -1,8 +1,10 @@
 import React from 'react'
 
 
-export default function MyComponent(props, context) {
-  return (
-    <div>Some Text changed again</div>
-  )
+export default class MyComponent extends React.Component {
+  render () {
+    return (
+      <div>Wheee HMR</div>
+    )
+  }
 }

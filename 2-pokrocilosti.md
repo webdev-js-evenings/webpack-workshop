@@ -148,7 +148,36 @@ Tohle je právě nejvíc vidět u šablon - proč stahovat šablonu, která se n
 Jinak ale tahle technologie je zcela nezávislá na Reactu, však si to můžete sami zkusit!
 
 ## React Hot Module Replacement
+Tohle je taková ta další wow věc, kterou člověk moc neocení. No tedy.
 
+Ve světě ClojureScriptu dlouhou dobu frčí nástroj [Figwheel](https://github.com/bhauman/lein-figwheel#writing-reloadable-code),
+který dokáže za běhu vyměňovat kusy kódu podle toho jak se zdrojáky mění a rovnou je spouští.
+Proto jsou možné takovéty cool ukázky live codingu jako je [třeba tahle](https://www.youtube.com/watch?v=KZjFVdU8VLI).
+
+Samozřejmě v Javascriptu se dá okopírovat skoro všechno, no a proto vznuknul nástroj React Hot Module Replacement,
+který umožňuje to samé pro Reactí komponenty: [https://vimeo.com/100010922](https://vimeo.com/100010922)
+
+Tuhle legraci umožnil `webpack-dev-server`, bez toho by to šlo o dost hůř. Ovšem v současné době (podzim 2016) probíhá tahle
+feature nějakým přepisem a je trošku obtížnější ji rozběhat. Přesto se o to pokusím.
+
+Kdysi probíhala celá konfigurace ve Webpacku, dneska se k tomu používá `.babelrc`, pokud tedy používáte Babel,
+pokud ne, tak stačí jenom pro soubory s reactími komponentami zapnout `react-hot` a stáhnout si `react-hot-loader` npm modul.
+
+Pokud máte babel, tak je třeba do `.babelrc` dopsat:
+```
+"env": {
+  "development": {
+    "plugins": [["react-transform", {
+      "transforms": [{
+        "transform": "react-transform-hmr",
+        "imports": ["react"],
+        "locals": ["module"]
+      }]
+    }]]
+  }
+}
+```
+A všechno by mělo fungovat, třeba s naším `webpack-babel.config.js`, který už máme.
 
 
 ## Demo time
