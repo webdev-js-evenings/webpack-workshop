@@ -17,7 +17,7 @@ Pluginy nefungují jako loadery, aplikují se na celý výsledný balíček a mo
 - nastavit globální proměnné podle kterých se dá "vyifovat" nechtěný kód v produkci
 - minifikovat build
 - najít nepoužívané soubory
-- vytvořit společný `chunk` pro kusy kódu použivané v různých `chunks`
+- [vytvořit společný](https://webpack.github.io/docs/list-of-plugins.html#1-commons-chunk-for-entries) `chunk` pro kusy kódu použivané v různých `chunks`
 - vyhodit notifikaci, že se při buildu vyskytla chyba - hodí se, když nemáte otevřenou konzoli
 
 A spousta dalších je [v dokumentaci](https://webpack.github.io/docs/list-of-plugins.html).
